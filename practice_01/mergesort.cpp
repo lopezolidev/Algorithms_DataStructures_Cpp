@@ -90,18 +90,12 @@ int main(){
     int Arr[] = { 8, 4, 2, 7, 1, 6, 3, 5 } ;
     int arrSize = sizeof(Arr)/4 ;
 
-    // int smallArr[] = { 0, 0, 0 }; 
-    // int smallSize = sizeof(smallArr) / 4 ;
 
     showArr(Arr, arrSize);
 
     mergeSort(Arr, 0, arrSize);
 
     showArr(Arr, arrSize);
-
-
-    // copiar(Arr, smallArr, smallSize, 4);
-    // showArr(smallArr, smallSize);
 
     return 0;
 }
