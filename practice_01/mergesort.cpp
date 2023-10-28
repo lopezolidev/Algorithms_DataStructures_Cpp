@@ -71,8 +71,8 @@ void mergeSort(int A[], int in, int fin){
 
         merge(A, izq, der, sizeIzq, sizeDer, in);
 
-        // delete izq;
-        // delete der; 
+        delete izq;
+        delete der; 
     }
 }
 
