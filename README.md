@@ -1,6 +1,6 @@
 # Algorithms_DataStructures_Cpp
 A repository to explore algorithms and data structures, ranging from recursion to graphs and more in C++
-Sure! Here's an overview of various data structures and algorithms, styled in Markdown with an outline format:
+
 
 # Data Structures and Algorithms Overview
 
