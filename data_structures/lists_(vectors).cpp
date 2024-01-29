@@ -47,8 +47,7 @@ To-be implemented:
     - resize (done)
     - insert (done)
     - deleter (done)
-    - push_start
-    - push_end
+    - push_start (done)
     - get_pos (done)
 
 */ 
