@@ -28,9 +28,9 @@ class List{
 
     public:
         List(){
-            _first = NULL;
-            _last = NULL;
-            _size = 0;
+            this->_first = NULL;
+            this->_last = NULL;
+            this->_size = 0;
         } // creating the list with a null pointer for first and last pointers. It's an empty list
 
     ~List(){
@@ -44,11 +44,11 @@ class List{
     } //the destructor method will erase each node from the list iterating through each of them.
 
     position first(){
-        return _first;
+        return this->_first;
     }   //returns a pointer to the first node on the list
     
     position last(){
-        return _last;
+        return this->_last;
     }   //returns a pointer to the last node on the list. ALWAYS is set to NULL
 
     void next(position &p){

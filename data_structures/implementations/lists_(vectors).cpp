@@ -11,7 +11,7 @@ class List {
     const int step = this->capacity / 2;
     int size;
     void resize(int capac);
-    bool filler();
+    // bool filler();
 
     public:
 
@@ -21,7 +21,7 @@ class List {
             this->capacity = cap;
             this->elements = new int[capacity]; 
             this->size = 0;
-            this->filler();
+            // this->filler();
         } // constructor, can be used for default capacity or sending a capacity by argument
 
         ~List(){
@@ -30,6 +30,7 @@ class List {
 
 //-------------------------------------//
 
+        int array(int pos);
         bool insert(int e, int pos);
         bool deleter(int pos);
         bool push_start(int e);
@@ -41,7 +42,7 @@ class List {
         int get_capacity(){
             return this->capacity; 
         }
-        int get_length(){return this->size;} // returns how many elements we have in the array
+        int get_size(){return this->size;} // returns how many elements we have in the array
 };
 
 /*
@@ -54,15 +55,23 @@ To-be implemented:
 
 */ 
 
-bool List::filler(){
-    int i = 0;
-    while(i < capacity){
-        this->elements[i] = -1;
-        i++;
-    }
+int List::array(int pos){
+    return this->elements[pos];
+} //returns the element like a traditional array
 
-    return true;
-}// fills with 0's every position in the list
+// bool List::filler(){
+//     int i = 0;
+//     while(i < capacity){
+//         this->elements[i] = -1;
+//         i++;
+//     }
+
+//     return true;
+// }// fills with 0's every position in the list
+/*
+    There's no need of filler(). The creation of a dynamic array initializes all the positions in 0 by default.
+*/
+
 
 void List::resize(int capacity){
     int *a = new int[capacity];  // creating a new array with new size
@@ -103,7 +112,7 @@ bool List::deleter(int pos){
     } //if the position to delete the element is greater or less than the dimensions of the array
 
     int i = pos + 1;
-    while(i < this->size){
+    while(i <= this->size){
         this->elements[i - 1] = this->elements[i];
         i++;
     } //sweeping elements backwards one position to delete the desired element
@@ -130,7 +139,7 @@ bool List::push_start(int e){
 }   //inserts the element at the start of the list
 
 bool List::push_end(int e){
-    return insert(e, this->size -1);
+    return insert(e, this->size);
 } //inserts the element at the end of the list
    
 int List::pop(){
@@ -153,7 +162,53 @@ int main(){
     List l(10);
 
     cout << "capacity: " << l.get_capacity() << endl; 
+    cout << "size: " << l.get_size() << endl;
 
+    cout << "at position 0 we have " << l.array(0) << endl;
+    cout << "at position 1 we have " << l.array(1) << endl;
+    cout << "at position 2 we have " << l.array(2) << endl;
+    cout << "at position 3 we have " << l.array(3) << endl;
+    cout << "at position 4 we have " << l.array(4) << endl;
+
+
+
+    l.push_start(3);
+    cout << "at position 0, we have " << l.array(0) << endl;
+    cout << "at position 1 we have " << l.array(1) << endl; 
+
+    l.push_start(2);
+    cout << "at position 0, we have " << l.array(0) << endl;
+    l.push_end(5);
+    cout << "at position 2, we have " << l.array(2) << endl;
+    l.push_end(6);
+    cout << "at position 3, we have " << l.array(3) << endl;
+
+    cout << "size: " << l.get_size() << endl;
+
+    l.insert(1, 2);
+    cout << "at position 2, we have " << l.array(2) << endl;
+    cout << "at position 3, we have " << l.array(3) << endl;
+    cout << "at posiiton 4, we have " << l.array(4) << endl;
+
+
+    l.deleter(3);
+    cout << "at position 3, we have " << l.array(3) << endl;
+    cout << "at posiiton 4, we have " << l.array(4) << endl;
+
+    int v = l.pop();
+    cout << "the first element was " << v << endl;
+    cout << "Now the first element is: " << l.array(0) << endl;
+    l.push_start(v);
+
+    int v_2 = l.shift();
+    cout << "The last element was " << v_2 << endl;
+    cout << "Now the last element is: " << l.array(l.get_size() - 1) << endl;
+    l.push_end(v_2); 
+
+    int* p = l.get_pos(0);
+    cout << "What's the direction of the first element? " << p << endl;
+    *p = 10;
+    cout << "We did: *p = 10, now let's check that position: " << l.array(0) << endl;
 
     return 0;
 }
