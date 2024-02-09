@@ -81,11 +81,12 @@ class List{
 
     void insert(T x, Node<T>* p, bool before = true){
         Node<T>* newNode = new Node<T>(x); // creating a new pointed node 
-        _size++;    // increasing its size
         
         if(isEmpty()){  
             this->_first = newNode;
             this->_last = newNode;
+            _size++;    // increasing its size
+        
             return;
         } // if the list is empty, first and last point to the same node
         
@@ -104,6 +105,8 @@ class List{
                 newNode->next = first();
                 this->_first = newNode;
             }   //the case when we want to insert before the first node
+            _size++;    // increasing its size
+        
             return;
         } else {
             //if before == false
@@ -113,6 +116,8 @@ class List{
             if(p == last()){
                 this->_last = newNode;
             }
+            _size++;    // increasing its size
+        
             return;
         }
          // pointing to the last new Node when pointer p is last
